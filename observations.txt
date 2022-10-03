@@ -1,0 +1,27 @@
+
+10x10
+Laser always travels horizontal or vertical
+1. Laser(emitter)- 
+    1.  Can’t die
+    2. Placed at corners
+    3. Can be rotated in 2 ways
+2. Deflector -
+    1.  Has 2 weak spots(to die)(both perpendicular)
+    2. One mirror side
+3. Defender - 
+    1. Has 3 weak spots(similar to last)
+    2. One place side that can block laser
+4. Switch-
+    1. Can’t die.
+    2. Has 2 mirror surfaces
+5. King -
+    1. If hit by laser, player loses.
+6. Eye of Horus-
+    1. 
+5 different board setups- ace, curiosity, grail, mercury, Sophie
+
+General rules-
+1. Player can move only their own tokens
+2. Rotate by 90 degrees or move piece by 1 in any directions including diagonal
+3. Switch cannot swap places with a king or a switch piece but any other piece if it is in direct contact with it.
+4. Tokens can’t go in oppsite coloured helic spaces.

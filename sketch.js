@@ -1,22 +1,22 @@
 var board, turnRed,
   tempOrient,
-  l, peice, tempLoc, time = [[],[]];
+  l, peice, tempLoc, time = [[], []];
 const scl = 60
 
 function setup(c) {
   createCanvas(scl * 10, scl * 8);
   let conf;
-  if(c){
-    conf=c;
+  if (c) {
+    conf = c;
   }
   else {
-    conf=grail
+    conf = grail
   }
   board = null
   turnRed = true;
-  tempOrient=null;
+  tempOrient = null;
   l = null;
-  peice=null;
+  peice = null;
   tempLoc = null
   board = read(conf)
   //double check
@@ -350,14 +350,14 @@ function showLaser() {
 
 function emit() {
   let path = turnRed ? [
-      [0, 0]
-    ] : [
-      [9, 7]
-    ],
+    [0, 0]
+  ] : [
+    [9, 7]
+  ],
     x = turnRed ? 0 : 9,
     y = turnRed ? 0 : 7,
     d = turnRed ? board[0][0] : board[7][9] + 2
-  for (;;) {
+  for (; ;) {
     switch (d) {
       case 0:
         y += 1;
@@ -390,7 +390,7 @@ function emit() {
       path.push([x, y])
       return [path, false]
     }
-    if (board[y][x] != "" && typeof(board[y][x]) == "string") {
+    if (board[y][x] != "" && typeof (board[y][x]) == "string") {
       let e = board[y][x]
       path.push([x, y]);
       switch (e[0]) {
@@ -514,13 +514,13 @@ function keyPressed() {
     case 38:
       if (peice) {
         let e = board[peice[1]][peice[0]];
-        if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 && peice[1]==7 && !turnRed)) {
+        if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 && peice[1] == 7 && !turnRed)) {
           if (tempOrient == null) tempOrient = e
           if (tempOrient) tempOrient = 0;
           else tempOrient = 1;
           return;
         }
-        if (!turn(e[1])||e[0]=='K') return;
+        if (!turn(e[1]) || e[0] == 'K') return;
         tempLoc = null;
         if (e == "") return;
         switch (e[0]) {
@@ -565,160 +565,160 @@ function keyPressed() {
         }
       }
       break;
-      case 39:
-        if (peice) {
-          let e = board[peice[1]][peice[0]];
-          if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 && peice[1]==7 && !turnRed)) {
-            if (tempOrient == null) tempOrient = e
-            if (tempOrient) tempOrient = 0;
-            else tempOrient = 1;
-            return;
-          }
-          if (!turn(e[1])||e[0]=='K') return;
-          tempLoc = null;
-          if (e == "") return;
-          switch (e[0]) {
-            case 'd':
-              //deflector
-              if (tempOrient != null) {
-                tempOrient += 1
-                if (tempOrient == 4) {
-                  tempOrient = 0
-                }
-
-              } else {
-                tempOrient = int(e[2]) + 1
-                if (tempOrient == 4) {
-                  tempOrient = 0
-                }
-              }
-              break;
-            case 'D':
-              //defender
-              let o = tempOrient == null ? e[2] : tempOrient
-              switch (o) {
-                case 'u':
-                  tempOrient = 'r'
-                  break;
-                case 'r':
-                  tempOrient = 'd'
-                  break;
-                case 'd':
-                  tempOrient = 'l';
-                  break;
-                case 'l':
-                  tempOrient = 'u';
-                  break;
-              }
-              break;
-            case 's':
-              if (tempOrient == null) tempOrient = e[2]
-              if (tempOrient == 'a') tempOrient = 'b'
-              else tempOrient = 'a'
-              break;
-          }
+    case 39:
+      if (peice) {
+        let e = board[peice[1]][peice[0]];
+        if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 && peice[1] == 7 && !turnRed)) {
+          if (tempOrient == null) tempOrient = e
+          if (tempOrient) tempOrient = 0;
+          else tempOrient = 1;
+          return;
         }
-        break;
-      case 40:
-        if(peice){
-          let e = board[peice[1]][peice[0]];
-          if((peice[1]==0&&peice[0]==0&&turnRed)||(peice[0]==9&&peice[1]==7&&!turnRed)){
-            if(tempOrient==null)tempOrient=e
-            if(tempOrient) tempOrient = 0;
-            else tempOrient = 1;
-            return;
-          }
-          if(!turn(e[1])||e[0]=='K')return;
-          tempLoc = null;
-          if(e=="")return;
-          switch(e[0]){
-            case 'd':
-              //deflector
-              if(tempOrient!=null) {
-                tempOrient = tempOrient-1
-                if(tempOrient==-1)tempOrient=3
+        if (!turn(e[1]) || e[0] == 'K') return;
+        tempLoc = null;
+        if (e == "") return;
+        switch (e[0]) {
+          case 'd':
+            //deflector
+            if (tempOrient != null) {
+              tempOrient += 1
+              if (tempOrient == 4) {
+                tempOrient = 0
+              }
 
-              }else {
-                tempOrient = int(e[2])-1
-                if(tempOrient==-1){tempOrient=3}
+            } else {
+              tempOrient = int(e[2]) + 1
+              if (tempOrient == 4) {
+                tempOrient = 0
               }
-              break;
-            case 'D':
-              //defender
-              let o = tempOrient==null ? e[2] : tempOrient
-              switch (o) {
-                case 'u':
-                  tempOrient = 'l'
-                  break;
-                case 'r':
-                  tempOrient = 'u'
-                  break;
-                case 'd':
-                  tempOrient = 'r';
-                  break;
-                case 'l':
-                  tempOrient = 'd';
-                  break;
-              }
-              break;
-            case 's':
-              if(tempOrient==null)tempOrient=e[2]
-              if(tempOrient=='a')tempOrient='b'
-              else tempOrient = 'a'
-              break;
-          }
-        }
-        break;
-        case 37:
-          if(peice){
-            let e = board[peice[1]][peice[0]];
-            if((peice[1]==0&&peice[0]==0&&turnRed)||(peice[0]==9||peice[7]&&!turnRed)){
-              if(tempOrient==null)tempOrient=e
-              if(tempOrient) tempOrient = 0;
-              else tempOrient = 1;
-              return;
             }
-            if(!turn(e[1])||e[0]=='K')return;
-            tempLoc = null;
-            if(e=="")return;
-            switch(e[0]){
+            break;
+          case 'D':
+            //defender
+            let o = tempOrient == null ? e[2] : tempOrient
+            switch (o) {
+              case 'u':
+                tempOrient = 'r'
+                break;
+              case 'r':
+                tempOrient = 'd'
+                break;
               case 'd':
-                //deflector
-                if(tempOrient!=null) {
-                  tempOrient = tempOrient-1
-                  if(tempOrient==-1)tempOrient=3
-
-                }else {
-                  tempOrient = int(e[2])-1
-                  if(tempOrient==-1){tempOrient=3}
-                }
+                tempOrient = 'l';
                 break;
-              case 'D':
-                //defender
-                let o = tempOrient==null ? e[2] : tempOrient
-                switch (o) {
-                  case 'u':
-                    tempOrient = 'l'
-                    break;
-                  case 'r':
-                    tempOrient = 'u'
-                    break;
-                  case 'd':
-                    tempOrient = 'r';
-                    break;
-                  case 'l':
-                    tempOrient = 'd';
-                    break;
-                }
-                break;
-              case 's':
-                if(tempOrient==null)tempOrient=e[2]
-                if(tempOrient=='a')tempOrient='b'
-                else tempOrient = 'a'
+              case 'l':
+                tempOrient = 'u';
                 break;
             }
-          }
-          break;
+            break;
+          case 's':
+            if (tempOrient == null) tempOrient = e[2]
+            if (tempOrient == 'a') tempOrient = 'b'
+            else tempOrient = 'a'
+            break;
+        }
+      }
+      break;
+    case 40:
+      if (peice) {
+        let e = board[peice[1]][peice[0]];
+        if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 && peice[1] == 7 && !turnRed)) {
+          if (tempOrient == null) tempOrient = e
+          if (tempOrient) tempOrient = 0;
+          else tempOrient = 1;
+          return;
+        }
+        if (!turn(e[1]) || e[0] == 'K') return;
+        tempLoc = null;
+        if (e == "") return;
+        switch (e[0]) {
+          case 'd':
+            //deflector
+            if (tempOrient != null) {
+              tempOrient = tempOrient - 1
+              if (tempOrient == -1) tempOrient = 3
+
+            } else {
+              tempOrient = int(e[2]) - 1
+              if (tempOrient == -1) { tempOrient = 3 }
+            }
+            break;
+          case 'D':
+            //defender
+            let o = tempOrient == null ? e[2] : tempOrient
+            switch (o) {
+              case 'u':
+                tempOrient = 'l'
+                break;
+              case 'r':
+                tempOrient = 'u'
+                break;
+              case 'd':
+                tempOrient = 'r';
+                break;
+              case 'l':
+                tempOrient = 'd';
+                break;
+            }
+            break;
+          case 's':
+            if (tempOrient == null) tempOrient = e[2]
+            if (tempOrient == 'a') tempOrient = 'b'
+            else tempOrient = 'a'
+            break;
+        }
+      }
+      break;
+    case 37:
+      if (peice) {
+        let e = board[peice[1]][peice[0]];
+        if ((peice[1] == 0 && peice[0] == 0 && turnRed) || (peice[0] == 9 || peice[7] && !turnRed)) {
+          if (tempOrient == null) tempOrient = e
+          if (tempOrient) tempOrient = 0;
+          else tempOrient = 1;
+          return;
+        }
+        if (!turn(e[1]) || e[0] == 'K') return;
+        tempLoc = null;
+        if (e == "") return;
+        switch (e[0]) {
+          case 'd':
+            //deflector
+            if (tempOrient != null) {
+              tempOrient = tempOrient - 1
+              if (tempOrient == -1) tempOrient = 3
+
+            } else {
+              tempOrient = int(e[2]) - 1
+              if (tempOrient == -1) { tempOrient = 3 }
+            }
+            break;
+          case 'D':
+            //defender
+            let o = tempOrient == null ? e[2] : tempOrient
+            switch (o) {
+              case 'u':
+                tempOrient = 'l'
+                break;
+              case 'r':
+                tempOrient = 'u'
+                break;
+              case 'd':
+                tempOrient = 'r';
+                break;
+              case 'l':
+                tempOrient = 'd';
+                break;
+            }
+            break;
+          case 's':
+            if (tempOrient == null) tempOrient = e[2]
+            if (tempOrient == 'a') tempOrient = 'b'
+            else tempOrient = 'a'
+            break;
+        }
+      }
+      break;
     case 49:
       setup(ace)
       break;
@@ -741,13 +741,13 @@ function keyPressed() {
   }
 }
 
-function turn(c){
-  return (c=='r'&&turnRed)||(c=='w'&&!turnRed)
+function turn(c) {
+  return (c == 'r' && turnRed) || (c == 'w' && !turnRed)
 }
 
 function canOrient() {
   let e = board[peice[1]][peice[0]]
-  if (typeof(e) == "number") {
+  if (typeof (e) == "number") {
     return e != tempOrient
   }
   switch (e[0]) {
@@ -766,8 +766,8 @@ function canOrient() {
         case 'l':
           return tempOrient == 'u' || tempOrient == 'd'
       }
-      case 's':
-        return e[2] != tempOrient
+    case 's':
+      return e[2] != tempOrient
   }
 }
 
@@ -792,7 +792,7 @@ function move() {
     let x_ = abs(x - peice[0]),
       y_ = abs(y - peice[1]),
       t = ((e[1] == 'r' ^ def_brd[y][x] == 2) || def_brd[y][x] == 0) && (!(turnRed ^ e[1] == 'r')) && (board[y][x][0] == 'D' || board[y][x][0] == 'd')
-    if (e[0] == 's' && typeof(board[y][x]) == "string" && x_ <= 1 && y_ <= 1 && (x_ == 1 || y_ == 1) && t) {
+    if (e[0] == 's' && typeof (board[y][x]) == "string" && x_ <= 1 && y_ <= 1 && (x_ == 1 || y_ == 1) && t) {
       //swap
       tempLoc = [x, y, true]
       return;
@@ -823,7 +823,7 @@ function keyReleased() {
         turnRed = !turnRed;
         if (l[1]) {
           var p = l[0][l[0].length - 1]
-          if(board[p[1]][p[0]][0]=='K')setup(grail)
+          if (board[p[1]][p[0]][0] == 'K') setup(grail)
           else board[p[1]][p[0]] = ""
         }
         l = null

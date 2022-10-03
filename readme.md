@@ -1,13 +1,13 @@
-this is my p5.js version of laser chess. there are also 2 .txt files that show my notes while making this.
+#Khet - Laser Chess
 
-for rules check the following -
+This is a `p5.js` version of *Khet* (Laser Chess). There are also 2 `.txt` files that show the notes used in creating this project.
+
+###[Click here](https://www.thinkfun.com/wp-content/uploads/2017/10/LaserCh-1034-Instructions.pdf) to see the *rules*
     
-    https://www.thinkfun.com/wp-content/uploads/2017/10/LaserCh-1034-Instructions.pdf
     
-    
-link to play - https://editor.p5js.org/arnavg472/present/wE1HXi780
+###[Click here](https://editor.p5js.org/arnavg472/present/wE1HXi780) to *play*
 
-web editor - https://editor.p5js.org/arnavg472/sketches/wE1HXi780
+###[Click here](https://editor.p5js.org/arnavg472/sketches/wE1HXi780) to open the *wed editor*
 
 
-Created with ProAltro and chaitanya-keyal
+Created with @ProAltro and @Chaitanya-Keyal

@@ -8,6 +8,3 @@ This is a `p5.js` version of *Khet* (Laser Chess). There are also 2 `.txt` files
 ### [Click here](https://editor.p5js.org/arnavg472/present/wE1HXi780) to *play*
 
 ### [Click here](https://editor.p5js.org/arnavg472/sketches/wE1HXi780) to open the *wed editor*
-
-
-Created with @ProAltro and @Chaitanya-Keyal
